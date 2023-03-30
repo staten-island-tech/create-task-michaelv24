@@ -3,9 +3,9 @@ export { array };
 const array = [
   {
     name: "paper towels",
-    type: "utlities",
+    type: "utilities",
     brand: "bounty",
-    cost: "$" + 10.0,
+    cost: 10.0,
     image:
       "https://i5.walmartimages.com/asr/4e2fd22b-71dd-47f3-8edf-beb8b9b8fe2a.4376838a78cfcedb54e2a640acf86268.jpeg",
   },
