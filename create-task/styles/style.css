@@ -3,18 +3,17 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-size: 62.5%;
-  background-color:aqua;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6{
-      text-align: center;
-      margin: 2rem;
-      
-  }
+  background-color: aqua;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-align: center;
+  margin: 2rem;
+}
 .btnUtil,
 .btnBook,
 .btnToy,
@@ -31,39 +30,38 @@ body {
 }
 .btnUtil:hover,
 .btnBook:hover,
-.btnToy:hover, {
+.btnToy:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 0.5rem rgba(0, 0, 0, 0.2);
 }
-.items{
+.items {
   text-align: center;
   display: flex;
   flex-direction: row;
-  flex-wrap:wrap;
-  background-color:purple;
+  flex-wrap: wrap;
+  background-color: purple;
 }
-.main{
-  text-align:center;
+.main {
+  text-align: center;
 }
-.intro{
-  text-align:center;
-  font-size:50px;
+.intro {
+  text-align: center;
+  font-size: 50px;
 }
-.text{
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+.text {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding: 1.5rem 4rem;
   margin: 1rem auto;
   font-size: 1rem;
   border: none;
   transition: all 0.2s;
-  background-color:var(--text);
-  
+  background-color: var(--text);
 }
 .text:hover {
-  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
-.img{ 
-height: 237px;
-width: 420px;
-object-fit: contain;
+.img {
+  height: 237px;
+  width: 420px;
+  object-fit: contain;
 }
