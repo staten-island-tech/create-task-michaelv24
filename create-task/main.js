@@ -32,11 +32,14 @@ const addToCart = function (object) {
 
 const dispCart = function () {
   console.log(cart);
-  DOMSelectors.display.insertAdjacentHTML("beforeend", "<text>Cart</text>");
+  DOMSelectors.display.insertAdjacentHTML(
+    "beforeend",
+    `<text class="cartText">Cart</text>`
+  );
   for (let i of cart) {
     DOMSelectors.display.insertAdjacentHTML(
       "beforeend",
-      `<div>${i.innerHTML}</div>`
+      `<div class="cartItem">${i.innerHTML}</div>`
     );
     for (let j of DOMSelectors.addTo) {
       j.remove();
@@ -45,31 +48,38 @@ const dispCart = function () {
 };
 
 const clearCart = function () {
-  DOMSelectors.display.insertAdjacentHTML("beforeend", "<text>Cart</text>");
+  DOMSelectors.display.insertAdjacentHTML(
+    "beforeend",
+    `<text class="cartText">Cart</text>`
+  );
   cart = [];
   alert("Cart has been cleared");
 };
 
 const Data = function (target) {
   let obj;
+  console.log(array);
   for (let i of array) {
-    if (i.name === target) {
+    if (i.name.toLowerCase().trim() === target.toLowerCase().trim()) {
       obj = i;
       break;
     }
+  }
+  if (!obj) {
+    throw "item is not for sale";
   }
   const name = obj.name;
   const image = obj.image;
   const type = obj.type;
   DOMSelectors.display.insertAdjacentHTML(
     "afterbegin",
-    `<div class="card"><ul><li class="list-name">${name}</li> <li class="list-category">${type}</li> <li class="list-description">${type}</li> <li><img src="${image}" alt="Picture of ${name}" class="img"></img></li> <button class="addTo">Add To Cart</button>`
+    `<div class="card"><ul><li class="list-name">${name}</li> <li class="list-category">${type}</li> <li><img src="${image}" alt="Picture of ${name}" class="img"></img></li> <button class="addTo">Add To Cart</button>`
   );
 };
 
 const chooseUtilities = function () {
   array
-    .filter((theArr) => theArr.type === "utilities")
+    .filter((theArr) => theArr.type === "Utilities")
     .forEach((obj) => {
       DOMSelectors.display.insertAdjacentHTML(
         "beforeend",
@@ -153,6 +163,7 @@ DOMSelectors.form.addEventListener("submit", async function () {
     Data(name);
   } catch (e) {
     alert("Item is not for sale");
+    console.log(e);
   }
   DOMSelectors.form.reset();
   for (let btn of DOMSelectors.addTo) {
@@ -160,13 +171,4 @@ DOMSelectors.form.addEventListener("submit", async function () {
       addToCart(this.parentElement);
     });
   }
-  // for (let btn of DOMSelectors.remove) {
-  //   btn.addEventListener("click", function () {
-  //     this.parentElement.parentElement.remove();
-  //   });
-  // }
 });
-
-// function removeDiv(e) {
-//   e.parentElement.remove();
-// }

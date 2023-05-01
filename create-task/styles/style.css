@@ -57,7 +57,8 @@ h6 {
   padding: 1.5rem 4rem;
   margin: 1rem auto;
   font-size: 1rem;
-  border: none;
+  border: solid;
+  color:black;
   transition: all 0.2s;
   background-color: var(--text);
 }
@@ -68,4 +69,29 @@ h6 {
   height: 237px;
   width: 420px;
   object-fit: contain;
+}
+.cartText {
+  font-size:30px;
+  margin-bottom: 2rem;
+  border:solid;
+  border-color:black;
+}
+.list-name{
+  font-size:40px;
+  list-style-type: none;
+}
+.list-category{
+  font-size:35px;
+  list-style-type: none;
+}
+.btnClear{
+  margin-top:20rem;
+}
+.cartItem{
+  border:solid;
+  border-color:black;
+  margin-top:1rem;
+}
+li{
+  list-style-type:none;
 }
