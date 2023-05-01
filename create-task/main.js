@@ -152,7 +152,7 @@ DOMSelectors.form.addEventListener("submit", async function () {
   try {
     Data(name);
   } catch (e) {
-    alert("Item Does not exist");
+    alert("Item is not for sale");
   }
   DOMSelectors.form.reset();
   for (let btn of DOMSelectors.addTo) {
