@@ -20,6 +20,7 @@ h6 {
 .btnUtil,
 .btnBook,
 .btnToy,
+.btnAll,
 .btn:link,
 .btn:visited {
   text-transform: uppercase;
@@ -33,7 +34,8 @@ h6 {
 }
 .btnUtil:hover,
 .btnBook:hover,
-.btnToy:hover {
+.btnToy:hover,
+.btnAll:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 0.5rem rgba(0, 0, 0, 0.2);
 }

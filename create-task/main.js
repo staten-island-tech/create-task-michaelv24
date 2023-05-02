@@ -7,6 +7,7 @@ const DOMSelectors = {
   buttonUtil: document.querySelector(".btnUtil"),
   buttonBook: document.querySelector(".btnBook"),
   buttonToy: document.querySelector(".btnToy"),
+  buttonAll: document.querySelector(".btnAll"),
   buttonClear: document.querySelector(".btnClear"),
   clearCart: document.querySelector(".btnClearCart"),
   cart: document.querySelector(".btnCart"),
@@ -21,6 +22,7 @@ const DOMSelectors = {
   addTo: document.getElementsByClassName("addTo"),
 };
 
+//Cart Functions
 const removeDiv = function () {
   DOMSelectors.display.innerHTML = "";
 };
@@ -56,6 +58,7 @@ const clearCart = function () {
   alert("Cart has been cleared");
 };
 
+//Gets target item and adds to the div
 const Data = function (target) {
   let obj;
   console.log(array);
@@ -77,44 +80,41 @@ const Data = function (target) {
   );
 };
 
-const chooseUtilities = function () {
-  array
-    .filter((theArr) => theArr.type === "Utilities")
-    .forEach((obj) => {
+//Filter Algorithm
+const filterShop = function (type) {
+  //if all passed in then dont filter and return all of the objects in the shop
+  if (type === "All") {
+    array.forEach((array) =>
       DOMSelectors.display.insertAdjacentHTML(
         "beforeend",
-        `<div class="text"><img class="img" src=${obj.image}><img><p>${obj.name}</p>
+        `<div class="text"><img class="img" src=${array.image}><img><p>${array.name}</p>
+          <p>${array.type}</p> <button class="addTo">Add To Cart</button> </div>`
+      )
+    );
+  }
+  //if the type is none of these then the category does not exist
+  else if (!type == "Utilities" || !type == "Toys" || !type == "Books") {
+    alert("Category does not exist");
+  }
+  //Otherwise the array is filtered by type
+  else {
+    array
+      .filter((theArr) => theArr.type === type)
+      .forEach((obj) => {
+        DOMSelectors.display.insertAdjacentHTML(
+          "beforeend",
+          `<div class="text"><img class="img" src=${obj.image}><img><p>${obj.name}</p>
         <p>${obj.type}</p> <button class="addTo">Add To Cart</button></div>`
-      );
-    });
-};
-const chooseBooks = function () {
-  array
-    .filter((theArr) => theArr.type === "Books")
-    .forEach((array) =>
-      DOMSelectors.display.insertAdjacentHTML(
-        "beforeend",
-        `<div class="text"><img class="img" src=${array.image}><img><p>${array.name}</p>
-        <p>${array.type}</p> <button class="addTo">Add To Cart</button> </div>`
-      )
-    );
-};
-const chooseToys = function () {
-  array
-    .filter((theArr) => theArr.type === "Toys")
-    .forEach((array) =>
-      DOMSelectors.display.insertAdjacentHTML(
-        "beforeend",
-        `<div class="text"><img class="img" src=${array.image}><img><p>${array.name}</p>
-        <p>${array.type}</p> <button class="addTo">Add To Cart</button> </div>`
-      )
-    );
+        );
+      });
+  }
 };
 
+//Button Functions
 DOMSelectors.buttonUtil.addEventListener("click", function () {
   console.log(DOMSelectors.display);
   removeDiv();
-  chooseUtilities();
+  filterShop("Utilities");
   for (let btn of DOMSelectors.addTo) {
     btn.addEventListener("click", function () {
       addToCart(this.parentElement);
@@ -124,7 +124,7 @@ DOMSelectors.buttonUtil.addEventListener("click", function () {
 DOMSelectors.buttonBook.addEventListener("click", function () {
   console.log(DOMSelectors.display);
   removeDiv();
-  chooseBooks();
+  filterShop("Books");
   for (let btn of DOMSelectors.addTo) {
     btn.addEventListener("click", function () {
       addToCart(this.parentElement);
@@ -134,7 +134,18 @@ DOMSelectors.buttonBook.addEventListener("click", function () {
 DOMSelectors.buttonToy.addEventListener("click", function () {
   console.log(DOMSelectors.display);
   removeDiv();
-  chooseToys();
+  filterShop("Toys");
+  for (let btn of DOMSelectors.addTo) {
+    btn.addEventListener("click", function () {
+      addToCart(this.parentElement);
+    });
+  }
+});
+
+DOMSelectors.buttonAll.addEventListener("click", function () {
+  console.log(DOMSelectors.display);
+  removeDiv();
+  filterShop("All");
   for (let btn of DOMSelectors.addTo) {
     btn.addEventListener("click", function () {
       addToCart(this.parentElement);
@@ -154,6 +165,7 @@ DOMSelectors.clearCart.addEventListener("click", function () {
   clearCart();
 });
 
+//Search Bar
 DOMSelectors.form.addEventListener("submit", async function () {
   event.preventDefault();
   removeDiv();
